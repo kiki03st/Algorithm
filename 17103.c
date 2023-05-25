@@ -1,41 +1,31 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
+
 int main(){
-	int n, m, x, y;
+	int n, m, max = 0, count;
 	scanf("%d", &n);
-	int* arr = (int*)malloc(sizeof(int) * n);
-	int* result = (int*)malloc(sizeof(int) * n);
-	for(int i = 0; i < n; i++) result[i] = 0;
+	int* num = (int*)malloc(sizeof(int) * n);
 	for(int i = 0; i < n; i++){
 		scanf("%d", &m);
-		x = m / 2;
-		int* er = (int*)malloc(sizeof(int) * (m + 1));
-		for(int j = 0; j <= m; j++){
-			if(j == 0 || j == 1) er[j] = -1;
-			else er[j] = j;
-		}
-		for(int j = 2; j < m; j++){
-			if(er[j] == -1) continue;
-			for(int k = j + 1; k <= m; k++){
-				if(er[k] % er[j] == 0) er[k] = -1;
-			}
-		}
-		for(int j = 2; j < m / 2; j++){
-			if(er[j] != -1 && er[m - j] != -1){
-				result[i]+=1;
-			}
-		}
-/*
-		for(int j = 2; j <= m; j++){
-			if(er[j] != -1) printf("%d ", er[j]);
-		}
-		printf("\n");
-*/
-		if(er[x] != -1) result[i]+=1;
-		free(er);
+		if(m > max) max = m;
+		num[i] = m;
 	}
-	for(int i = 0; i < n; i++) printf("%d\n", result[i]);
+	int* arr = (int*)malloc(sizeof(int) * (2 * max + 1));
+	for(int i = 1; i <= 2 * max; i++) arr[i] = 1;
+	for(int i = 2; i < 2 * max; i++){
+		for(int j = i + 1; j <= 2 * max; j++){
+			if(!(j % i) && arr[j]) arr[j] = 0;
+		}
+	}
+	for(int i = 0; i < n; i++){
+		count = 0;
+		for(int j = 2; j <= num[i] / 2; j++){
+			if(arr[j] && arr[num[i] - j]) count++;
+		}
+		printf("%d\n", count);
+	}
+	free(num);
 	free(arr);
-	free(result);
 	return 0;
 }
