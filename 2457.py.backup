@@ -1,0 +1,18 @@
+n = int(input())
+arr = [[] for _ in range(n)]
+pre_month, pre_day = 0, 0
+start = [[0, 0, 0, 0]]
+for i in range(n):
+    start_month, start_day, end_month, end_day = map(int, input().split())
+    arr[i] = [start_month, start_day, end_month, end_day]
+    if start_month == 3 and start_day == 1 or start_month < 2:
+        if end_month == start[0][2] and end_day > start[0][3] or end_month > starti[0][2]:
+            start[0] = arr[i]
+            pre_month = start[0][3]
+            pre_day = start[0][4];
+    else:
+        for j in range(len(start)):
+            target = start[j]
+            month_s, day_s, month_e, day_e = target
+            if (start_month == month_s and start_day <= day_s or start_month < month_s) and (end_month == month_e and end_day >= day_e or end_month > month_e):
+                start[j] = arr[i]
