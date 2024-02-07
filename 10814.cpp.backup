@@ -1,0 +1,59 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class dict{
+	private:
+		int age;
+		string name;
+	public:
+		dict(){}
+		dict(int age, string name){
+			this -> age = age;
+			this -> name = name;
+		}
+		void set_age(int age){
+			this -> age = age;
+		}
+		void set_name(string name){
+			this -> name = name;
+		}
+		int get_age(){
+			return age;
+		}
+		string get_name(){
+			return name;
+		}
+};
+
+int main(){
+	int n, age;
+	cin >> n;
+	string name;
+	dict *arr = new dict[n];
+	for(int i = 0; i < n; i++){
+		cin >> age;
+		cin >> name;
+		arr[i].set_age(age);
+		arr[i].set_name(name);
+	}
+	dict tmp;
+	for(int i = n - 2; i >= 0; i--){
+		for(int j = 0; j <= i; j++){
+			if(arr[j].get_age() > arr[j + 1].get_age()){
+				tmp.set_age(arr[j].get_age());
+				tmp.set_name(arr[j].get_name());
+				arr[j].set_age(arr[j + 1].get_age());
+				arr[j].set_name(arr[j + 1].get_name());
+				arr[j + 1].set_age(tmp.get_age());
+				arr[j + 1].set_name(tmp.get_name());
+			}
+		}
+	}
+
+	for(int i = 0; i < n; i++){
+		cout << arr[i].get_age() << " " << arr[i].get_name() << endl;
+	}
+	return 0;
+}

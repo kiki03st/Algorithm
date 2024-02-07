@@ -2,17 +2,23 @@
 
 using namespace std;
 
-struct tuple{
-	int x, y;
-};
+class dictionary{
+	private:
+		int *arr;
+		int len;
+	public:
+		dictionary(){
+			arr = new int[0];
+			len = 0;
+		}
+		void append(int n){
+
+		}
 
 int main(){
-	int n;
+	int n, x, y;
 	cin >> n;
-	tuple *arr = new tuple[n];
 	for(int i = 0; i < n; i++){
-		cin >> arr[i] -> x;
-		cin >> arr[i] -> y;
-
+		
 	return 0;
 }
