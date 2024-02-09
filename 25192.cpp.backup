@@ -1,0 +1,35 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main(){
+	int n, len = 0, sum = 0;
+	cin >> n;
+	string line;
+	bool tf;
+	string *arr = new string[n];
+	for(int i = 0; i < n; i++){
+		cin >> line;
+		if(line.compare("ENTER") == 0){
+			sum += len;
+			len = 0;
+		}
+		else{
+			tf = true;
+			for(int j = 0; j < len; j++){
+				if(line.compare(arr[j]) == 0){
+					tf = false;
+					break;
+				}
+			}
+			if(tf){
+				arr[len++] = line;
+			}
+		}
+	}
+	sum+=len;
+	cout << sum << endl;
+		
+	return 0;
+}
