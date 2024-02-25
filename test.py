@@ -1,3 +1,5 @@
-a = [[3, 2, 1, 4], [1, 2, 7, 5], [1, 1, 3, 5], [8, 2, 6, 5], [5, 2, 4, 1]]
-a = sorted(a)
-print(a)
+n = 'z'
+sum = 0
+for i in range(50):
+	sum += ord(n) * (10 ** (i + 1))
+print(sum)

@@ -1,0 +1,72 @@
+#include <iostream>
+
+using namespace std;
+
+struct node{
+	int data;
+	int len;
+	node *pre;
+	node *list;
+	node *next;
+	void append(int n){
+		node *p = new node;
+		p -> data = n;
+		p -> list = NULL;
+		p -> next = NULL;
+		p -> len = this -> len;
+		p -> pre = this -> pre;
+		this -> list = p;
+	}
+	void under(int n){
+		node *p = new node;
+		p -> data = n;
+		p -> list = NULL;
+		p -> next = NULL;
+		p -> len = this -> len + 1;
+		p -> pre = this;
+		this -> next = p;
+	}
+};
+
+class graph{
+	private:
+		int len;
+		node *root;
+	public:
+		graph(){
+			root = NULL;
+		}
+		graph(int n){
+			root = new node;
+			root -> data = n;
+			root -> list = NULL;
+			root -> next = NULL;
+			root -> len = 0;
+		}
+		void solution(){
+			if(!root){
+				cout << "Error" << endl;
+				return;
+			}
+			while(true){
+
+
+		void solution(int n){
+			if(!root){
+				root = new node;
+			}
+			root -> data = n;
+			root -> list = NULL;
+			root -> next = NULL;
+			root -> len = 0;
+
+
+
+};
+
+int main(){
+	int n;
+	cin >> n;
+
+	return 0;
+}
